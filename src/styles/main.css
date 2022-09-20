@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #F8F6F1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 45vw 1fr;
+    grid-template-areas: "logo mapa"
+                         "texto mapa"
+                         "botoes mapa";
+}
+
+h1 {
+    font-size: 3vw;
+    font-family: 'Questrial', sans-serif;
+    grid-area: texto;
+    text-align: center;
+}
+
+.logo {
+    width: 35vw;
+    height: 35vw;
+    position: relative;
+    left: 15%;
+    top: 5%;
+    grid-area: logo;
+}
+
+button {
+    grid-area: texto;
+    height: 10vw;
+    width: 15vw;
+    position: relative;
+    left: 18%;
+    top: 0%;
+    border: 0;
+    border-radius: 25px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+}
+
+.vetor-mapa {
+    grid-area: mapa;
+    position: relative;
+    width: 45vw;
+    height: 45vw;
+}
+
+.achar {
+    background: #2D78C8;
+    transition: background  0.5s, box-shadow 0.2s;
+    filter: drop-shadow(2px 2px 2px #000);
+}
+
+.achar:hover {
+    background: #f69f3b;
+    filter: drop-shadow(0px 0px 0px #000);
+}
+
+
+
+.dar:hover {
+    background: #2a78a0;
+    filter: drop-shadow(0px 0px 0px #000);
+}
+
+.dar {
+    background: #252627;
+    transition: background  0.5s, box-shadow 0.2s;
+    filter: drop-shadow(2px 2px 2px #000);
+}
