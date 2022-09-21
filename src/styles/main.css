@@ -18,6 +18,8 @@ h1 {
     font-family: 'Questrial', sans-serif;
     grid-area: texto;
     text-align: center;
+    width: 368px;
+    height: 125px;
 }
 
 .logo {
