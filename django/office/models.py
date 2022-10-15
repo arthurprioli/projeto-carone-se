@@ -5,25 +5,25 @@ from django.forms import CharField, DateField, DateTimeField, FloatField, Intege
 
 
 class Carona(models.Model):
-    destino = models.CharField(max_length=80)
-    inicio =   models.CharField(max_length=80)
-    data_hora = models.DateTimeField()
-    motorista = models.CharField(max_length=100)
+    destino = models.CharField(max_length=200)
+    inicio =   models.CharField(max_length=100)
+    data_hora = models.DateTimeField("data/hora")
+    motorista = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     genero = models.CharField(max_length=1)
-    vagas = models.IntegerField()
-    preco = models.FloatField()
+    vagas = models.IntegerField(default=0)
+    preco = models.FloatField("preço", default=0.)
 
     def __str__(self):
-        return f"Destino: {self.destino}. Inicio {self.inicio}. Data e hora: {self.data_hora}. Motorista: {self.motorista}. Genero: {self.genero} Vagas: {self.vagas} Preco: {self.preco} \n"
+        return f"Destino: {self.destino}. Início {self.inicio}. Data e hora: {self.data_hora}. Motorista: {self.motorista}. Gênero: {self.genero} Vagas: {self.vagas} Preço: {self.preco} \n"
 
     
 class Usuario(models.Model):
-    nome = models.CharField(max_length=80)
+    nome = models.CharField(max_length=100)
     genero = models.CharField(max_length=1)
-    endereco = models.CharField(max_length=100)
+    endereco = models.CharField(max_length=200)
 
     def __str__(self):
-        return f"Nome: {self.nome} genero: {self.genero}. Endereco: {self.endereco} \n"
+        return f"Nome: {self.nome}; Gênero: {self.genero}; Endereço: {self.endereco} \n"
 class Pontuacao(models.Model):
     pontuacao = models.FloatField()
 
