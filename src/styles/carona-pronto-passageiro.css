@@ -1,0 +1,39 @@
+h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.usuario {
+    position: relative;
+    left: 5%;
+    width: 25vw;
+    height: 5vw;
+    background: #FFF;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    filter: drop-shadow(2px, 2px, 2px, #000);
+}
+
+.usuario > img {
+    width: 5vw;
+    height: 5vw;
+    padding: 5px;
+}
+
+.volante { 
+    position: relative;
+    bottom: 9.3vw;
+    left: 70%;
+}
+
+p {
+    position: relative;
+    bottom: 90%;
+    left: 22%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3vw;
+}
+
+button {
+    filter: opacity(46%) !important;
+    filter: drop-shadow(2px, 2px, 2px, #000) !important; 
+}

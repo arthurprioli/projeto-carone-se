@@ -6,36 +6,38 @@
         <link rel="shortcut icon" href="./assets/icone.png"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="./styles/carona-motorista.css" rel="stylesheet">
+        <link href="./styles/cabecalho-dividido.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
     </head>
     <body>
         <nav>
-            <a><img src="./assets/voltar.png" alt=""></a>
+            <a href="./index.html"><img src="./assets/voltar.png" class="voltar" alt=""></a>
             <h1>CRIAR GRUPO DE CARONA</h1>
         </nav>
         <div class="info">
-            <div class="partida">
-                <label for="partida">Partida: </p>
+            <div class="req">
+                <label for="partida">Partida: </label><br />
                 <input id="partida" type="text" placeholder="Insira rua de origem">
             </div>
-            <div class="hora-saida">
-                <label for="hora-saida">Horário de saída: </p>
+            <div class="req">
+                <label for="hora-saida">Horário de saída: </label><br />
                 <input type="time" name="hora-saida" placeholder="Insira o horário de saída" id="hora-saida">
             </div>
-            <div class="destino">
-                <label for="destino">Destino: </label>
+            <div class="req">
+                <label for="destino">Destino: </label><br />
                 <input type="text" name="destino" id="destino" placeholder="Insira o destino">
             </div>
-            <div class="valor">
-                <label for="valor-pessoa">Valor por pessoa: </label>
+            <div class="req">
+                <label for="valor-pessoa">Valor por pessoa: </label><br />
                 <input type="text" name="valor-pessoa" id="valor-pessoa" placeholder="Qual o valor por pessoa?">
             </div>
-            <div class="quantidade">
-                <label for="quantidade">Pessoas por carro: </label>
+            <div class="req">
+                <label for="quantidade">Pessoas por carro: </label><br />
                 <input type="text" name="valor-pessoa" id="valor-pessoa" placeholder="Quantas pessoas no carro?">
             </div>
-        </div>
-        <button class="criar">CRIAR GRUPO</button>
+            <a href="./grupo-motorista.html"><button class="criar">CRIAR GRUPO</button></a>
+        </div>   
         <img src="./assets/mapa-tracado.png" alt="mapa-com-rotas-tracadas">
     </body>
 </html>
