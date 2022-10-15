@@ -7,7 +7,7 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 1fr 45vw 1fr;
+    grid-template-rows: 50vh 25vh 55vh;
     grid-template-areas: "logo mapa"
                          "texto mapa"
                          "botoes mapa";
@@ -18,38 +18,43 @@ h1 {
     font-family: 'Questrial', sans-serif;
     grid-area: texto;
     text-align: center;
-    width: 368px;
-    height: 125px;
+    width: 30vw;
+    height: 25vh;
+    position: relative;
+    margin: 0;
+    left: 12%;
 }
 
 .logo {
-    width: 35vw;
-    height: 35vw;
+    width: 25vw;
+    height: 25vw;
     position: relative;
     left: 15%;
-    top: 5%;
+    top: 0%;
     grid-area: logo;
 }
 
 button {
     grid-area: texto;
-    height: 10vw;
+    height: 5vw;
     width: 15vw;
     position: relative;
-    left: 18%;
+    left: 11%;
     top: 0%;
     border: 0;
     border-radius: 25px;
     color: white;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
+    font-weight: 600;
+    margin-right: 8px;
 }
 
 .vetor-mapa {
     grid-area: mapa;
     position: relative;
-    width: 45vw;
-    height: 45vw;
+    width: 50vw;
+    height: 47vw;
 }
 
 .achar {
