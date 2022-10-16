@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <title>Carone-Se - A Sua Plataforma de Caronas</title>
+        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
+        <link rel="stylesheet" href="{% static "office/styles/main.css" %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <img class="logo" src="{% static "office/assets/logo-sem-fundo.png" %}" alt="logo-carone-se">
+        <h1>A plataforma para os que buscam carona!</h1>
+        <div class="passageiro-motorista">
+            <a href="{% url "office:passageiro" %}"><button class="achar">Achar Carona</button></a>
+            <a href="{% url "office:organizar-motorista" %}"><button class="dar">Dar Carona</button></a>
+        </div>
+        <img src="{% static "office/assets/mapa-logo.jpg" %}" alt="mapa-estilo-google-maps" class="vetor-mapa">
+    </body>
+</html>

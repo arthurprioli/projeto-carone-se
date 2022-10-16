@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <title>Carone-Se - A Sua Plataforma de Caronas</title>
+        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <a><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
+            <h1>BUSCAR CARONA</h1>
+        </nav>
+        <div class="info">
+            <div class="partida">
+                <label for="partida">Partida: </p>
+                <input id="partida" type="text" placeholder="Insira rua de origem">
+            </div>
+            <div class="hora-saida">
+                <label for="hora-saida">Horário de saída: </p>
+                <input type="time" name="hora-saida" placeholder="Insira o horário de saída" id="hora-saida">
+            </div>
+            <div class="destino">
+                <label for="destino">Destino: </label>
+                <input type="text" name="destino" id="destino" placeholder="Insira o destino">
+            </div>
+        </div>
+        <button class="confirmar">CARONE-SE!</button>
+        <img src="{% static "office/assets/mapa-tracado.png" %}" alt="mapa-com-rotas-tracadas">
+    </body>
+</html>

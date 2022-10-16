@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #F8F6F1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 20vh 40vh;
+    grid-template-areas: "cab cab"
+                         "info mapa";
+}
+
+nav {
+    background: #252627;
+    grid-area: cab;
+    margin: 0;
+}
+
+.voltar {
+    position: relative;
+    width: 10vw;
+    height: 7vw;
+    filter: invert(1);
+    top: 15%;
+    left: 5%;
+}
+
+nav > h1 {
+    position: relative;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;  
+    font-weight: 500;
+    font-size: 2vw;
+    text-align: center;
+    bottom: 50%;
+}
+
+.info {
+    grid-area: info;
+    background: #E7E7E7;
+    width: 75vh;
+    height: 75vh;
+    filter: drop-shadow(2px 2px 2px rgb(119, 119, 119));
+}
+
+img { 
+    position: relative;
+    right: 0%;
+    grid-area: mapa;
+    width: 58vw;
+    height: 38vw;
+}
+
+button {
+    position: relative;
+    left: 15%;
+    top: 2.5%;
+    height: 5vw;
+    width: 20vw;
+    background: #252627;
+    color: #FFF;
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.7vw;
+    border-radius: 25px;
+    border: 0;
+    filter: drop-shadow(4px 4px 4px rgb(77, 77, 77));
+}
+
+button:hover {
+    filter: drop-shadow(0px 0px 0px rgb(77, 77, 77));
+}
