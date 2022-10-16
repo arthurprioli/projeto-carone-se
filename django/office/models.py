@@ -3,6 +3,14 @@ from django.forms import CharField, DateField, DateTimeField, FloatField, Intege
 
 # Create your models here.
 
+    
+class Usuario(models.Model):
+    nome = models.CharField(max_length=100)
+    genero = models.CharField(max_length=1)
+    endereco = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Nome: {self.nome}; Gênero: {self.genero}; Endereço: {self.endereco} \n"
 
 class Carona(models.Model):
     destino = models.CharField(max_length=200)
@@ -16,14 +24,6 @@ class Carona(models.Model):
     def __str__(self):
         return f"Destino: {self.destino}. Início {self.inicio}. Data e hora: {self.data_hora}. Motorista: {self.motorista}. Gênero: {self.genero} Vagas: {self.vagas} Preço: {self.preco} \n"
 
-    
-class Usuario(models.Model):
-    nome = models.CharField(max_length=100)
-    genero = models.CharField(max_length=1)
-    endereco = models.CharField(max_length=200)
-
-    def __str__(self):
-        return f"Nome: {self.nome}; Gênero: {self.genero}; Endereço: {self.endereco} \n"
 class Pontuacao(models.Model):
     pontuacao = models.FloatField()
 
