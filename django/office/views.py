@@ -25,15 +25,22 @@ def passageiro(request):
     context = {}
     return render(request, "office/passageiro.html", context)
 
-
 def carona_pronto_passageiro(request):
     context = {}
     return render(request, "office/carona-pronto-passageiro.html", context)
 
-def carona_andamento_passageiro(request):
+def pagina_andamento_passageiro(request):
     context = {}
-    return render(request, "office/carona-andamento-passageiro.html", context)
+    return render(request, "office/pagina-andamento-passageiro.html", context)
 
-def carona_andamento_motorista(request):
+def pagina_andamento_motorista(request):
     context = {}
-    return render(request, "office/carona-andamento-motorista.html", context)
+    return render(request, "office/pagina-andamento-motorista.html", context)
+
+def pagina_escolher_grupo_carona(request):
+    context = {}
+    return render(request, "office/pagina-escolher-grupo-carona.html", context)
+
+def pagina_procurar_carona(request):
+    context = {}
+    return render(request, "office/pagina-procurar-carona.html", context)
