@@ -1,0 +1,90 @@
+.saveButton {
+    background-color: #19ee39;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+    border-radius: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    margin-top: 20px;
+}
+
+.saveButton:hover {
+background-color: #2c9a3c;
+color: white;
+}
+
+.saveButton:active{
+    opacity: 0.7;
+}
+
+.retAzul {
+    background-color: blue;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    font-size: 15px;
+}
+
+.palavraCadastro{
+    margin-left: 65px;
+    margin-right: 100px;
+}
+
+.retPreto {
+    background-color: black;
+    color: white;
+    font-family: Arial;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100px;
+    text-align: center;
+    margin-left: 300px;
+    margin-bottom: 0;
+}
+
+div {
+    text-align: center;
+}
+
+input {
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    width: 400px;
+}
+
+label{
+    background-color: black;
+    color: white;
+    font-family: Arial;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    width:150px;
+    display: inline-block;
+}
+
+.cadastro{
+    margin-left: 100px;
+    margin-right: 100px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.rad {
+    margin-top: 70px;
+    width:10px;
+}

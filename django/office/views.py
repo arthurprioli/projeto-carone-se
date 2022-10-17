@@ -21,9 +21,13 @@ def organizar_motorista(request):
     context = {}
     return render(request, "office/organizar-motorista.html", context)
 
-def passageiro(request):
+def pagina_login(request):
     context = {}
-    return render(request, "office/passageiro.html", context)
+    return render(request, "office/login.html", context)
+
+def pagina_cadastro(request):
+    context = {}
+    return render(request, "office/cadastro.html", context)
 
 def carona_pronto_passageiro(request):
     context = {}

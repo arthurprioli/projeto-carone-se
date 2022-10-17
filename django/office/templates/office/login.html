@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <title>Carone-Se - A Sua Plataforma de Caronas</title>
+    <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
+    <link rel="stylesheet" href="{% static "office/styles/login.css" %}">
+</head>
+
+<body>
+    <div class="dark">
+        <h1 class="textoLogin">FAZER LOGIN</h1>
+    </div>
+
+    <div class="central">
+
+        <img src="{% static "office/assets/logo-sem-fundo.png" %}">
+        <br>
+        <br>
+        <p class="semMargem">Seja bem vindo de volta!</p>
+        <p>Não tem uma conta?</p>
+        <p>Clique em "cadastre-se" abaixo!</p>
+        
+        <label for="nome">E-mail:</label><br><input type="email">
+        <br>
+        <label for="password">Senha:</label><br><input type="password">
+        <br>
+        <br>
+        <button class="entrarButton">
+            Entrar
+        </button>
+        <br>
+        <button class="cadastrarButton">
+            Cadastre-se
+        </button>
+
+    </div>
+</body>
+</html>
