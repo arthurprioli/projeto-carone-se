@@ -1,22 +1,38 @@
+/* SUS */
 .dark, .dark p {
     background-color: #252627;
     color: white;
     font-size: 45px;
-    text-align: center;
+    /* text-align: center; */
     margin-bottom: 0;
 }
 
+
+/**** FLEX USUARIOS ****/
+
+.flex-usuarios-parent {
+    display: flex;
+    /* justify-content: flex-start; */
+    flex-wrap: wrap;
+    /* align-content: space-around; */
+    gap: 1vw;
+    padding-top: 0.7vh;
+}
+
+/**** END FLEX USUARIOS ****/
+
+
 .textoLogin {
     text-align: center;
-    padding-top: 30px;
+    /* padding-top: 30px;
     padding-bottom: 30px;
-    margin-bottom: 0;
+    margin-bottom: 0; */
 }
 
 .flex-parent-element {
     display: flex;
     width: 100%;
-    height: 600px;
+    /* height: 600px; */
 }
 
 .flex-child-element-gray {
@@ -88,9 +104,9 @@ p {
 
 .son { 
     float: left;
-    width: 30%;
-    margin-left: 22px;
-    height: 100%;
+    min-width: 10vw;
+    /* margin-left: 22px; */
+    /* max-height: 14vw; */
     border: 10px;
     background-color: #d1d1e0;
     font-size: 20px;
@@ -105,7 +121,8 @@ p {
 }
 
 .juntar {
-    margin-top: 36px;
+    /* margin-top: 36px; */
+    margin-top: 1vw;
     text-align: center;
     background-color: blue;
     color: white;

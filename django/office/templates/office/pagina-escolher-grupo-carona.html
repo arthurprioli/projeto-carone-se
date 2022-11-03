@@ -6,12 +6,14 @@
     <title>Carone-Se - A Sua Plataforma de Caronas</title>
     <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
     <link rel="stylesheet" href="{% static "office/styles/pagina-escolher-grupo-carona.css" %}">
+    <link rel="stylesheet" href="{% static "office/styles/cabecalho-novo.css" %}">
 </head>
     
 <body>
-    <div class="dark">
+    <nav class="dark">
+        <a href="{% url "office:pagina-procurar-carona" %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
         <h1 class="textoLogin">BUSCAR CARONA</h1>
-    </div>
+    </nav>
     
     <div class="flex-parent-element">
         
@@ -33,10 +35,10 @@
         </div>
         
         
-        <div class="flex-child-element-green">
-            <br>
-            <div class="upper">
-                                <div class="dad">
+        <div class="flex-child-element-green flex-usuarios-parent">
+            <!-- <br> -->
+            <!-- <div class="upper"> -->
+                                <!-- <div class="dad"> -->
                                     <div class="son">
                                         <button class="blacksies">
                                             Grupo de {usuário A}
@@ -88,12 +90,12 @@
 
 
                                     </div>
-                                </div>
+                                <!-- </div> -->
 
-            </div>
-<br>
-            <div class="lower">
-                                <div class="dad">
+            <!-- </div> -->
+<!-- <br> -->
+            <!-- <div class="lower"> -->
+                                <!-- <div class="dad"> -->
                                     <div class="son">
                                         <button class="blacksies">
                                             Grupo de {usuário D}
@@ -146,9 +148,9 @@
 
 
                                     </div>
-                                 </div>
+                                 <!-- </div> -->
 
-            </div>
+            <!-- </div> -->
         </div>
 
     </div>
