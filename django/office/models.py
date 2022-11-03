@@ -13,14 +13,14 @@ class Usuario(models.Model):
     min_pontos = models.FloatField(default=0.0)
 
     def __str__(self):
-        return f"Nome: {self.nome}; Gênero: {self.genero}; Endereço: {self.endereco} \n"
+        return f"Nome: {self.nome}; Gênero: {self.genero}; Endereço: {self.endereco}; Pontos: {self.pontuacao}\n"
 
 class Carona(models.Model):
     destino = models.CharField(max_length=200)
     inicio =   models.CharField(max_length=100)
     data_hora = models.DateTimeField("data/hora")
-    motorista = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    genero = models.CharField(max_length=1)
+    motorista = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="%(app_label)s_%(class)s_motorista")
+    passageiros = models.ManyToManyField(Usuario, related_name="%(app_label)s_%(class)s_passageiros", blank=True)
     vagas = models.IntegerField(default=0)
     preco = models.FloatField("preço", default=0.)
     pontuacao = models.FloatField(default=0.0)
@@ -28,7 +28,7 @@ class Carona(models.Model):
     min_pontos = models.FloatField(default=0.0)
 
     def __str__(self):
-        return f"Destino: {self.destino}. Início {self.inicio}. Data e hora: {self.data_hora}. Motorista: {self.motorista}. Gênero: {self.genero} Vagas: {self.vagas} Preço: {self.preco} \n"
+        return f"Destino: {self.destino}. Início {self.inicio}. Data e hora: {self.data_hora}. Motorista: {self.motorista}. Vagas: {self.vagas} Preço: {self.preco} Pontos: {self.pontuacao}\n"
 
 class Pontuacao(models.Model):
     pontuacao = models.FloatField()

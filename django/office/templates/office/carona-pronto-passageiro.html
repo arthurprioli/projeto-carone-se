@@ -17,12 +17,20 @@
             <h1>GRUPO DE CARONA CRIADO</h1>
         </nav>
         <div class="info">
-            <h3>Grupo de {usuário}</h3>
+            <h3>Grupo de {{ motorista.nome }}</h3>
             <div class="usuario">
                 <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
-                <p>Usuário 1</p><img class="volante" src="{% static "office/assets/volante.png" %}" alt="volante-indica-motorista">
+                <p>{{ motorista.nome }}</p><img class="volante" src="{% static "office/assets/volante.png" %}" alt="volante-indica-motorista">
             </div>
-            <div class="usuario">
+            {% if passageiros %}
+                {% for passageiro in passageiros %}
+                <div class="usuario">
+                    <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
+                    <p>{{ passageiro.nome }}</p>
+                </div>
+                {% endfor %}
+            {% endif %}
+            <!-- <div class="usuario">
                 <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
                 <p>Usuário 2</p>
             </div>
@@ -33,7 +41,7 @@
             <div class="usuario">
                 <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
                 <p>Usuário 4</p>
-            </div>
+            </div> -->
             <button class="confirmar">ESPERANDO MOTORISTA</button>
         </div>
         <img src="{% static "office/assets/mapa-tracado.png" %}" alt="mapa-com-rotas-tracadas">
