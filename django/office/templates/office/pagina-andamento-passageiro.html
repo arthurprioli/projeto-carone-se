@@ -6,12 +6,14 @@
     <title>Carone-Se - A Sua Plataforma de Caronas</title>
     <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
     <link rel="stylesheet" href="{% static "office/styles/pagina-andamento-passageiro.css" %}">
+    <link rel="stylesheet" href="{% static "office/styles/cabecalho-novo.css" %}">
 </head>
 
 <body>
-    <div class="dark">
+    <nav class="dark">
+        <a href="{% url "office:carona-pronto-passageiro" %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
         <h1 class="textoLogin">Carona em andamento...</h1>
-    </div>
+    </nav>
 
     <div class="flex-parent-element">
 

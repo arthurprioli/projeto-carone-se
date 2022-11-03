@@ -1,3 +1,4 @@
+from django.http.request import HttpRequest
 from django.shortcuts import render
 
 # Create your views here.
@@ -21,8 +22,9 @@ def organizar_motorista(request):
     context = {}
     return render(request, "office/organizar-motorista.html", context)
 
-def pagina_login(request):
-    context = {}
+def pagina_login(request: HttpRequest):
+    tipo = request.GET.get("tipo", "passageiro")
+    context = { "login_motorista": tipo == "motorista" }
     return render(request, "office/login.html", context)
 
 def pagina_cadastro(request):
