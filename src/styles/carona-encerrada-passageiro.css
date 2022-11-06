@@ -1,0 +1,112 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #F8F6F1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 20vh 40vh;
+    grid-template-areas: "cab cab"
+                         "info info";
+}
+
+nav {
+    background: #252627;
+    grid-area: cab;
+    margin: 0;
+}
+
+.estrelas > img {
+    right: 3.5%;
+    width: 2.5vw;
+    display: inline-block;
+}
+
+.voltar {
+    position: relative;
+    width: 10vw;
+    height: 7vw;
+    filter: invert(1);
+    top: 15%;
+    left: 5%;
+}
+
+nav > h1 {
+    position: relative;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;  
+    font-weight: 500;
+    font-size: 2vw;
+    text-align: center;
+    bottom: 50%;
+}
+
+.info {
+    grid-area: info;
+    background: #E7E7E7;
+    width: 100%;
+    height: 75vh;
+    filter: drop-shadow(2px 2px 2px rgb(119, 119, 119));
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.info > h3 {
+    text-align: center;
+}
+
+.info > h2 {
+    text-align: center;
+}
+
+.info > a {
+    position: relative;
+    top: 12%;
+    left: 20%;
+}
+
+.avaliacao {
+    width: 45vh;
+    height: 45vh;
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: 30px;
+    position: relative;
+    left: 35vw;
+}
+
+p {
+    text-align: center;
+}
+
+img {
+    width: 15vw;
+    left: 15%;
+    position: relative;
+}
+
+button {
+    position: relative;
+    left: 14%;
+    top: 12%;
+    height: 5vw;
+    width: 20vw;
+    background: #252627;
+    color: #FFF;
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.7vw;
+    border-radius: 25px;
+    border: 0;
+    filter: drop-shadow(4px 4px 4px rgb(77, 77, 77));
+}
+
+button:hover {
+    filter: drop-shadow(0px 0px 0px rgb(77, 77, 77));
+}
+
+span {
+    font-weight: 800;
+}
