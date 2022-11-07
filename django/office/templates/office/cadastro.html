@@ -33,7 +33,7 @@
         </div>
         <br>
         <div>
-            <a href="{% url "office:pagina-login" %}"><button class="saveButton">
+            <a href="{% url "office:pagina-login" %}?tipo={% if login_motorista %}motorista{% else %}passageiro{% endif %}"><button class="saveButton">
                 SALVAR
             </button></a>
         </div>

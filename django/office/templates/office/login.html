@@ -39,7 +39,7 @@
         </button>
         </a>
         <br>
-        <a href="{% url "office:pagina-cadastro" %}"><button class="cadastrarButton">
+	<a href="{% url "office:pagina-cadastro" %}?tipo={% if login_motorista %}motorista{% else %}passageiro{% endif %}"><button class="cadastrarButton">
             Cadastre-se
         </button></a>
 

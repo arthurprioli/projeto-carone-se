@@ -18,20 +18,19 @@
     <div class="flex-parent-element">
 
         <div class="flex-child-element-gray">
-
             <p class="aCaminho">SEU MOTORISTA ESTÁ A CAMINHO...</p>
             <br>
             <button class="info">
                 <p>ULTIMO PASSAGEIRO BUSCADO</p>
-                <p class="bold">{ENDEREÇO USUÁRIO 3}</p>
+                <p class="bold">{{ motorista.endereco }}</p>
             </button>
             <button class="info">
                 <p>PROXIMO PASSAGEIRO</p>
-                <p class="bold">{ENDEREÇO USUÁRIO 4}</p>
+                <p class="bold">{% if passageiros|length > 1 %}{{ passageiros.1.endereco }}{% elif passageiros|length > 0 %}{{ passageiros.0.endereco }}{% else %}{{ motorista.endereco }}{% endif %}</p>
             </button>
             <button class="info">
                 <p>PROXIMO DESTINO</p>
-                <p class="bold">{DESTINO FINAL}</p>
+                <p class="bold">{{ destino }}</p>
             </button>
             <br>
             <br>
