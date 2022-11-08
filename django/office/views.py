@@ -2,8 +2,10 @@ import typing
 from office.models import Carona, Usuario
 from django.http.request import HttpRequest
 from django.http.response import HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.db.models import Model
+from .forms import CadastroForm
 
 # Create your views here.
 def index(request):
@@ -29,7 +31,14 @@ def pagina_login(request: HttpRequest):
 
 def pagina_cadastro(request):
     context = {}
-    return render(request, "office/cadastro.html", context)
+    if request.method  == "POST":
+        form = CadastroForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return redirect(reverse("office:pagina-login"))
+    else:
+        form = CadastroForm()
+    return render(request, "office/cadastro.html", context={"form":form})
 
 def pagina_escolher_grupo_carona(request: HttpRequest):
     partida = request.GET.get("partida", "")
