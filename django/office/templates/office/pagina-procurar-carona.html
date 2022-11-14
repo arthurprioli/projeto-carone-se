@@ -10,6 +10,7 @@
 </head>
     
 <body>
+    <script>var pagEscolherGrupoCarona = "{% url "office:pagina-escolher-grupo-carona" %}";</script>
     <nav class="dark">
         <a href="{% url "office:index" %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
         <h1 class="textoLogin">BUSCAR CARONA</h1>
@@ -19,7 +20,7 @@
         
         <div class="flex-child-element-gray">
             <br>
-            <label for="partida">Partida:</label><br><input type="text">
+            <label for="partida">Partida:</label><br><input type="text" id="input_partida">
             <br>
             <br>
             <label for="horario">Horário de saída:</label><br><input type="time">
@@ -29,9 +30,9 @@
             <br>
             <br>
             <br>
-            <a href="{% url "office:pagina-escolher-grupo-carona" %}?partida=Rua%20Joseph"><button class="caroneseButton">
+            <button onClick="location.href = pagEscolherGrupoCarona + '?partida=' + encodeURIComponent(document.getElementById('input_partida').value)" class="caroneseButton">
                 CARONE-SE!
-            </button></a>
+            </button>
         </div>
         
         
