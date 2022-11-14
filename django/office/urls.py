@@ -15,5 +15,6 @@ urlpatterns = [
     path("motorista/precarona/<int:carona_id>", views.grupo_motorista, name="grupo-motorista"),
     path("passageiro/carona/<int:carona_id>", views.pagina_andamento_passageiro, name="pagina-andamento-passageiro"),
     path("motorista/carona/<int:carona_id>", views.pagina_andamento_motorista, name="pagina-andamento-motorista"),
-    # posteriormente: <int:carona_id>
+    path("passageiro/poscarona/<int:carona_id>", views.carona_encerrada_passageiro, name="carona-encerrada-passageiro"),
+    path("motorista/poscarona/<int:carona_id>", views.carona_encerrada_motorista, name="carona-encerrada-motorista"),
 ]
