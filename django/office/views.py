@@ -109,4 +109,34 @@ def pagina_andamento_motorista(request: HttpRequest, carona_id):  # motorista/ca
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
         return HttpResponseNotFound("Carona inválida")
 
+def carona_encerrada_passageiro(request: HttpRequest, carona_id):  # passageiro/poscarona
+    try:
+        carona: Carona = Carona.objects.get(pk=carona_id)
+        motorista = { "nome": carona.motorista.nome, "endereco": carona.motorista.endereco }
+        todos_passageiros = carona.passageiros.all()
+        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
+        destino = carona.destino
+        context = {
+            "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros,
+            "destino": carona.destino, "valor": carona.preco
+            }
+        return render(request, "office/carona-encerrada-passageiro.html", context)
+    except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
+        return HttpResponseNotFound("Carona inválida")
+
+def carona_encerrada_motorista(request: HttpRequest, carona_id):  # motorista/poscarona
+    try:
+        carona: Carona = Carona.objects.get(pk=carona_id)
+        motorista = { "nome": carona.motorista.nome, "endereco": carona.motorista.endereco }
+        todos_passageiros = carona.passageiros.all()
+        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
+        destino = carona.destino
+        context = {
+            "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros,
+            "destino": carona.destino, "valor": carona.preco
+            }
+        return render(request, "office/carona-encerrada-motorista.html", context)
+    except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
+        return HttpResponseNotFound("Carona inválida")
+
 # -------------------------------------------

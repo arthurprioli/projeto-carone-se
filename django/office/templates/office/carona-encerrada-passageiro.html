@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <title>Carone-Se - A Sua Plataforma de Caronas</title>
+        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="{% static "office/styles/carona-encerrada-passageiro.css" %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <a href="{% url "office:pagina-andamento-passageiro" carona_id %}"><img class="voltar" src="{% static "office/assets/voltar.png" %}" alt=""></a>
+            <h1>CARONA ENCERRADA</h1>
+        </nav>
+        <div class="info">
+            <h3>Sua carona para {{ destino }} foi encerrada as {horario encerramento}</h3>
+            <h2>Avalie seu motorista: {{ motorista.nome }}</h2>
+            <div class="avaliacao">            
+                <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
+                <p>{{ motorista.nome }}</p>
+                <div class="estrelas">
+                    <img src="{% static "office/assets/estrela.png" %}" alt="estrela">
+                    <img src="{% static "office/assets/estrela.png" %}" alt="estrela">
+                    <img src="{% static "office/assets/estrela.png" %}" alt="estrela">
+                    <img src="{% static "office/assets/estrela.png" %}" alt="estrela">
+                    <img src="{% static "office/assets/estrela.png" %}" alt="estrela">
+                </div>
+            </div>
+            <button class="confirmar">AVALIAR MOTORISTA</button>
+            <a href="">Tive problemas com a carona</a>
+        </div>
+    </body>
+</html>
