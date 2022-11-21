@@ -17,4 +17,5 @@ urlpatterns = [
     path("motorista/carona/<int:carona_id>", views.pagina_andamento_motorista, name="pagina-andamento-motorista"),
     path("passageiro/poscarona/<int:carona_id>", views.carona_encerrada_passageiro, name="carona-encerrada-passageiro"),
     path("motorista/poscarona/<int:carona_id>", views.carona_encerrada_motorista, name="carona-encerrada-motorista"),
+    path("erro", views.erro_normal, name="erro"),
 ]
