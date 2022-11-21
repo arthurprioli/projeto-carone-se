@@ -140,3 +140,28 @@ def carona_encerrada_motorista(request: HttpRequest, carona_id):  # motorista/po
         return HttpResponseNotFound("Carona inválida")
 
 # -------------------------------------------
+
+
+# --------------- Erro ----------------------
+
+def erro_generico(request: HttpRequest, mensagem_erro: str):
+    context = { "mensagem_erro": mensagem_erro }
+    return render(request, "office/pagina-erro.html", context)
+
+def erro_normal(request: HttpRequest):
+    return erro_generico(request, request.GET.get("mensagem", ""))
+
+def erro_404(request: HttpRequest, exception):
+    print(f"404 debug: {exception}")
+    return erro_generico(request, "404: Não encontrado")
+
+def erro_500(request: HttpRequest):
+    return erro_generico(request, "500: Erro interno do servidor")
+
+def erro_403(request: HttpRequest, exception):
+    return erro_generico(request, "403: Permissão negada")
+
+def erro_400(request: HttpRequest, exception):
+    return erro_generico(request, "400: Pedido inválido")
+
+# -------------------------------------------
