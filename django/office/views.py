@@ -152,7 +152,6 @@ def erro_normal(request: HttpRequest):
     return erro_generico(request, request.GET.get("mensagem", ""))
 
 def erro_404(request: HttpRequest, exception):
-    print(f"404 debug: {exception}")
     return erro_generico(request, "404: Não encontrado")
 
 def erro_500(request: HttpRequest):
