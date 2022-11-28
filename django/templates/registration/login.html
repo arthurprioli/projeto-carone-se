@@ -15,7 +15,7 @@
 {% csrf_token %}
 {{form.username.label_tag}}
 {{form.username}}
-
+<br>
 {{form.password.label_tag}}
 {{form.password}}
 
@@ -24,6 +24,8 @@
 <input type="hidden" name='next' value="{{next}}">
  
 </form> 
+
+
 
 <!-- <!DOCTYPE html>
 <html>
