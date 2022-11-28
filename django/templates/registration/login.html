@@ -1,75 +1,40 @@
-{% if form.errors %}
-    <p>Seu usuário ou senha estão incorretos</p>
-{% endif %}
+<!DOCTYPE html>
 
-{% if next %}
-    {% if user.is_authenticated %}
-        <p>Você não tem autorização para ver essa página</p>
-
-    {% else %}
-        <p>Faça o login para ver essa página</p>
-    {% endif %}
-{% endif %}
-
-<form method='post' action="{% url 'login' %}">
-{% csrf_token %}
-{{form.username.label_tag}}
-{{form.username}}
-
-{{form.password.label_tag}}
-{{form.password}}
-
-
-<input type="submit" value='login'>
-<input type="hidden" name='next' value="{{next}}">
- 
-</form> 
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    {% load static %}
-    <meta charset="UTF-8" />
-    <title>Carone-Se - A Sua Plataforma de Caronas</title>
-    <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
-    <link rel="stylesheet" href="{% static "office/styles/login.css" %}">
-    <link rel="stylesheet" href="{% static "office/styles/cabecalho-novo.css" %}">
-</head>
-
-<body>
-    <nav class="dark">
-        <a href="{% url "office:index" %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
-        <h1 class="textoLogin">FAZER LOGIN</h1>
-    </nav>
-
-    <div class="central">
-
-        <img src="{% static "office/assets/logo-sem-fundo.png" %}">
-        <br>
-        <br>
-        <p class="semMargem">Seja bem vindo de volta!</p>
-        <p>Não tem uma conta?</p>
-        <p>Clique em "cadastre-se" abaixo!</p>
-        
-        <label for="nome">E-mail:</label><br><input type="email">
-        <br>
-        <label for="password">Senha:</label><br><input type="password">
-        <br>
-        <br>
-        {% if login_motorista %}
-        <a href="{% url "office:organizar-motorista" %}">
-        {% else %}
-        <a href="{% url "office:pagina-procurar-carona" %}">
-        {% endif %}
-        <button class="entrarButton">
-            Entrar
-        </button>
-        </a>
-        <br>
-        <a href="{% url "office:pagina-cadastro" %}"><button class="cadastrarButton">
-            Cadastre-se
-        </button></a>
-
-    </div>
-</body>
-</html> -->
+<html lang="pt-br">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <title>Carone-Se - Cadastro</title>
+        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
+        <link rel="stylesheet" href="{% static "office/styles/login-registration.css" %}">
+    </head>
+    <body>
+        <div class="mensagens">
+            {% if form.errors %}
+                        <p>O Usuário ou senha digitados estão incorretos</p>
+                    
+            {% endif %}
+        </div>
+        <div class="container">
+            <div class="nested-container">
+                <form method='post' action="{% url 'login' %}">
+                    <label for="nome-de-usuario">
+                        {% csrf_token %}
+                        {{form.username.label_tag}}
+                        {{form.username}}
+                    </label>
+                    <label for="senha">
+                        {{form.password.label_tag}}
+                        {{form.password}}
+                    </label>
+                    <label for="hidden">
+                        <input type="hidden" name='next' value="{{next}}">
+                    </label>
+                    <a href="{% url "office:pagina-login" %}?tipo={% if login_motorista %}motorista{% else %}passageiro{% endif %}"><button class="saveButton">
+                        ENTRAR
+                    </button></a>
+                </form> 
+            </div>
+        </div>
+    </body>
+</html>

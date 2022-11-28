@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     {% load static %}
     <meta charset="UTF-8" />
@@ -17,29 +17,60 @@
 
     <div class="central">
 
+        {% if form.errors %}
+        <p>O Usuário ou senha digitados estão incorretos</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+            <p>Seja Bem-Vindo</p>
+            <a href=" {% url 'registration/logout' % }?next={{request.path}}">LOGOUT</a>
+
+            {% else %}
+                <p>Faça o login para ver essa página</p>
+                <a href=" {% url 'registration/login' % }?next={{request.path}}">LOGIN</a>
+            {% endif %}
+        {% endif %}
+    
+
         <img src="{% static "office/assets/logo-sem-fundo.png" %}">
         <br>
         <br>
-        <p class="semMargem">Seja bem vindo de volta!</p>
-        <p>Não tem uma conta?</p>
-        <p>Clique em "cadastre-se" abaixo!</p>
-        
-        <label for="nome">E-mail:</label><br><input type="email">
+
+        <div class="">
+            <p class="semMargem">Seja bem vindo de volta!</p>
+            <p>Não tem uma conta?</p>
+            <p>Clique em "cadastre-se" abaixo!</p>
+         </div>
+         
+        <!-- <label for="nome">E-mail:</label><br><input type="email">
         <br>
         <label for="password">Senha:</label><br><input type="password">
         <br>
-        <br>
+        <br> --> 
         {% if login_motorista %}
         <a href="{% url "office:organizar-motorista" %}">
         {% else %}
         <a href="{% url "office:pagina-procurar-carona" %}">
         {% endif %}
-        <button class="entrarButton">
-            Entrar
-        </button>
+
+
+        <form method='post' action="{% url 'login' %}">
+            {% csrf_token %}
+            {{form.username.label_tag}}
+            {{form.username}}
+
+            {{form.password.label_tag}}
+            {{form.password}}
+
+            
+            <input class="entrarButton" type="submit" value='Entrar'>
+            <input type="hidden" name='next' value="{{next}}">
+        
+        </form> 
         </a>
         <br>
-	<a href="{% url "office:pagina-cadastro" %}?tipo={% if login_motorista %}motorista{% else %}passageiro{% endif %}"><button class="cadastrarButton">
+	    <a href="{% url "office:pagina-cadastro" %}?tipo={% if login_motorista %}motorista{% else %}passageiro{% endif %}"><button class="cadastrarButton">
             Cadastre-se
         </button></a>
 
