@@ -37,6 +37,15 @@ nav > h1 {
     bottom: 50%;
 }
 
+nav > p {
+    position: relative;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    bottom: 85%;
+    left: 80%;
+}
+
 .info {
     grid-area: info;
     background: #E7E7E7;
