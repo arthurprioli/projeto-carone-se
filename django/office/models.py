@@ -22,6 +22,8 @@ class Carona(models.Model):
     destino = models.CharField(max_length=200)
     inicio =   models.CharField(max_length=100)
     data_hora = models.DateTimeField("data/hora")
+    partida = models.DateTimeField("partida", null=True, blank=True) # data e horário da partida, ou NULL se não partiu ainda
+    chegada = models.DateTimeField("chegada", null=True, blank=True)  # data e horário da chegada, ou NULL se a carona não foi encerrada
     motorista = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="%(app_label)s_%(class)s_motorista")
     vagas = models.IntegerField(default=0)
     preco = models.FloatField("preço", default=0.)

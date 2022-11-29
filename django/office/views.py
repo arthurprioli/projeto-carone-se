@@ -23,6 +23,9 @@ def grupo_passageiro(request, carona_id):  # passageiro/busca-carona-old
     return render(request, "office/grupo-passageiro.html", context)
 
 def organizar_motorista(request):  # motorista/criar-carona
+    if request.user and request.user.usuario and request.user.usuario.carona:  # usuário já está em uma carona
+        return redirect(reverse("office:carona-pronto-passageiro", args=[request.user.usuario.carona.pk]))
+
     context = {}
     return render(request, "office/organizar-motorista.html", context)
 
@@ -43,6 +46,9 @@ def pagina_cadastro(request):  # cadastro
     return render(request, "office/cadastro.html", context={"form":form})
 
 def pagina_escolher_grupo_carona(request: HttpRequest):  # passageiro/busca-carona
+    if request.user and request.user.usuario and request.user.usuario.carona:  # usuário já está em uma carona
+        return redirect(reverse("office:carona-pronto-passageiro", args=[request.user.usuario.carona.pk]))
+
     partida = request.GET.get("partida", "")
     if partida == "":
         caronas_objs = Carona.objects.all()
@@ -53,13 +59,15 @@ def pagina_escolher_grupo_carona(request: HttpRequest):  # passageiro/busca-caro
     for carona in caronas_objs:
         motorista = { "nome": carona.motorista.nome }
         todos_passageiros = carona.usuario_set.all()
-        passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros ]
+        passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros if passageiro != carona.motorista ]
         caronas.append({ "id": carona.pk, "motorista": motorista, "passageiros": passageiros })
 
     context = { "partida": partida or "(Qualquer)", "bairro": "Gávea", "caronas": caronas }
     return render(request, "office/pagina-escolher-grupo-carona.html", context)
 
 def pagina_procurar_carona(request):  # passageiro/procurar-carona
+    if request.user and request.user.usuario and request.user.usuario.carona:  # usuário já está em uma carona
+        return redirect(reverse("office:carona-pronto-passageiro", args=[request.user.usuario.carona.pk]))
     context = {}
     return render(request, "office/pagina-procurar-carona.html", context)
 
@@ -75,8 +83,13 @@ def carona_pronto_passageiro(request: HttpRequest, carona_id):  # passageiro/pre
         elif request.user.usuario.carona != carona:
             return erro_generico(request, "Você não está nessa carona", status=403)
 
+        if carona.chegada:  # carona já acabou
+            return redirect(reverse("office:carona-encerrada-passageiro", args=[carona_id]))
+        if carona.partida:  # carona já começou
+            return redirect(reverse("office:pagina-andamento-passageiro", args=[carona_id]))
+
         todos_passageiros = carona.usuario_set.all()
-        passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros ]
+        passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros if passageiro != carona.motorista ]
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros }
         return render(request, "office/carona-pronto-passageiro.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
@@ -93,9 +106,14 @@ def grupo_motorista(request: HttpRequest, carona_id):  # motorista/precarona
             else:
                 return erro_generico(request, "Você não é o motorista dessa carona", status=403)
 
+        if carona.chegada:  # carona já acabou
+            return redirect(reverse("office:carona-encerrada-motorista", args=[carona_id]))
+        if carona.partida:  # carona já começou
+            return redirect(reverse("office:pagina-andamento-motorista", args=[carona_id]))
+
         todos_passageiros = carona.usuario_set.all()
 
-        passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros ]
+        passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros if passageiro != carona.motorista ]
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros }
         return render(request, "office/grupo-motorista.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
@@ -112,7 +130,7 @@ def pagina_andamento_passageiro(request: HttpRequest, carona_id):  # passageiro/
             return erro_generico(request, "Você não está nessa carona", status=403)
         todos_passageiros = carona.usuario_set.all()
 
-        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
+        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros if passageiro != carona.motorista ]
         destino = carona.destino
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros, "destino": carona.destino }
         return render(request, "office/pagina-andamento-passageiro.html", context)
@@ -131,7 +149,7 @@ def pagina_andamento_motorista(request: HttpRequest, carona_id):  # motorista/ca
                 return erro_generico(request, "Você não é o motorista dessa carona", status=403)
 
         todos_passageiros = carona.usuario_set.all()
-        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
+        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros if passageiro != carona.motorista ]
         destino = carona.destino
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros, "destino": carona.destino }
         return render(request, "office/pagina-andamento-motorista.html", context)
@@ -150,7 +168,7 @@ def carona_encerrada_passageiro(request: HttpRequest, carona_id):  # passageiro/
 
         todos_passageiros = carona.usuario_set.all()
 
-        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
+        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros if passageiro != carona.motorista ]
         destino = carona.destino
         context = {
             "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros,
@@ -172,7 +190,7 @@ def carona_encerrada_motorista(request: HttpRequest, carona_id):  # motorista/po
                 return erro_generico(request, "Você não é o motorista dessa carona", status=403)
 
         todos_passageiros = carona.usuario_set.all()
-        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
+        passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros if passageiro != carona.motorista ]
         destino = carona.destino
         context = {
             "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros,
