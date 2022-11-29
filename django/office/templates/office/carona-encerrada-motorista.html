@@ -12,11 +12,11 @@
     </head>
     <body>
         <nav>
-            <a href="{% url "office:pagina-andamento-motorista" carona_id %}"><img class="voltar" src="{% static "office/assets/voltar.png" %}" alt=""></a>
+            <a href="{% url "office:index" %}"><img class="voltar" src="{% static "office/assets/voltar.png" %}" alt=""></a>
             <h1>CARONA ENCERRADA</h1>
         </nav>
         <div class="info">
-            <h3>Sua carona para: <span>{{ destino }}</span> foi encerrada às <span>{horario encerramento}</span></h3>
+            <h3>Sua carona para: <span>{{ destino }}</span> foi encerrada às <span>{{ chegada }}</span></h3>
             <h2>O pagamento de <span>{{ valor }}</span> foi depositado em sua conta</h2>
             <div class="avaliacao-u">
                 <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
@@ -44,7 +44,12 @@
                     </div>
                 {% endfor %}
             {% endif %}
-            <button class="confirmar">AVALIAR MOTORISTA</button>
+            <form action="{% url "office:api-carona-avaliar" carona_id %}" method="post">
+                {% csrf_token %}
+                <button name="confirmar" value="confirmar" class="confirmar">
+                    AVALIAR MOTORISTA
+                </button>
+            </form>
             <a href="">Tive problemas com a carona</a>
         </div>
     </body>

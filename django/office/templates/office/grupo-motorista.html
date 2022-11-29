@@ -13,7 +13,7 @@
     </head>
     <body>
         <nav>
-            <a href="{% url "office:organizar-motorista" %}"><img src="{% static "office/assets/voltar.png" %}" class="voltar" alt=""></a>
+            <a href="{% url "office:index" %}"><img src="{% static "office/assets/voltar.png" %}" class="voltar" alt=""></a>
             <h1>GRUPO DE CARONA CRIADO</h1>
         </nav>
         <div class="info">
@@ -29,20 +29,18 @@
                     <p>{{ passageiro.nome }}</p>
                 </div>
                 {% endfor %}
+                
+                <form action="{% url "office:api-carona-iniciar" carona_id %}" method="post">
+                    {% csrf_token %}
+                    <button name="confirmar" value="confirmar" class="confirmar">
+                        INICIAR CARONA
+                    </button>
+                </form>
+            {% else %}
+                <button class="confirmar disabled-button" disabled title="Não é possível iniciar uma carona sem passageiros.">
+                    INICIAR CARONA
+                </button>
             {% endif %}
-            <!-- <div class="usuario">
-                <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
-                <p>Usuário 2</p>
-            </div>
-            <div class="usuario">
-                <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
-                <p>Usuário 3</p>
-            </div>
-            <div class="usuario">
-                <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
-                <p>Usuário 4</p>
-            </div> -->
-            <a href="{% url "office:pagina-andamento-motorista" carona_id %}"><button class="confirmar">INICIAR CARONA</button></a>
         </div>
         <img src="{% static "office/assets/mapa-tracado.png" %}" alt="mapa-com-rotas-tracadas">
     </body>

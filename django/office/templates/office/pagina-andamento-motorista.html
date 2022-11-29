@@ -11,7 +11,7 @@
 
 <body>
     <nav class="dark">
-        <a href="{% url "office:grupo-motorista" carona_id %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
+        <a href="{% url "office:index" %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
         <h1 class="textoLogin">Carona em andamento...</h1>
     </nav>
 
@@ -36,9 +36,12 @@
             </button>
             <br>
             <br>
-            <a href="{% url "office:carona-encerrada-motorista" carona_id %}"><button class="ultimo">
-                <p class="bold">ENCERRAR CARONA</p>
-            </button></a>
+            <form action="{% url "office:api-carona-encerrar" carona_id %}" method="post">
+                {% csrf_token %}
+                <button name="encerrar" value="encerrar" class="ultimo">
+                    <p class="bold">ENCERRAR CARONA</p>
+                </button>
+            </form>
         </div>
 
 
