@@ -36,9 +36,12 @@
             </button>
             <br>
             <br>
-            <a href="{% url "office:carona-encerrada-motorista" carona_id %}"><button class="ultimo">
-                <p class="bold">ENCERRAR CARONA</p>
-            </button></a>
+            <form action="{% url "office:api-carona-encerrar" carona_id %}" method="post">
+                {% csrf_token %}
+                <button name="encerrar" value="encerrar" class="ultimo">
+                    <p class="bold">ENCERRAR CARONA</p>
+                </button>
+            </form>
         </div>
 
 

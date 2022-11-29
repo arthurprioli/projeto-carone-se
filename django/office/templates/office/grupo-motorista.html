@@ -30,19 +30,13 @@
                 </div>
                 {% endfor %}
             {% endif %}
-            <!-- <div class="usuario">
-                <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
-                <p>Usuário 2</p>
-            </div>
-            <div class="usuario">
-                <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
-                <p>Usuário 3</p>
-            </div>
-            <div class="usuario">
-                <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
-                <p>Usuário 4</p>
-            </div> -->
-            <a href="{% url "office:pagina-andamento-motorista" carona_id %}"><button class="confirmar">INICIAR CARONA</button></a>
+
+            <form action="{% url "office:api-carona-iniciar" carona_id %}" method="post">
+                {% csrf_token %}
+                <button name="confirmar" value="confirmar" class="confirmar">
+                    INICIAR CARONA
+                </button>
+            </form>
         </div>
         <img src="{% static "office/assets/mapa-tracado.png" %}" alt="mapa-com-rotas-tracadas">
     </body>

@@ -41,6 +41,8 @@
                 <div class="son">
                     <button class="blacksies">
                         Grupo de {{ carona.motorista.nome }}
+                        <br/>
+                        <span class="text-vagas">(Vagas: {{ carona.restantes }} de {{ carona.vagas }})</span>
                     </button>
                     <div class="lista-passageiros">
                         <p class="individuo">&#x263A; {{ carona.motorista.nome }} &#x1F697;</p>
@@ -49,9 +51,18 @@
                         <p class="individuo">&#x263A; {{ passageiro.nome }}</p>
                         {% endfor %}
                     </div>
-                    <a class="a-juntar" href="{% url "office:carona-pronto-passageiro" carona.id %}"><button class="juntar">
-                        JUNTAR-SE
-                    </button></a>
+                    {% if carona.partida %}
+                    <button disabled class="juntar-disabled">(JÁ INICIADA)</button>
+                    {% elif carona.restantes < 1 %}
+                    <button disabled class="juntar-disabled">(CHEIA)</button>
+                    {% else %}
+                    <form action="{% url "office:api-carona-juntarse" carona.id %}" method="post">
+                        {% csrf_token %}
+                        <button name="juntar" value="juntar-se" class="juntar">
+                            JUNTAR-SE
+                        </button>
+                    </form>
+                    {% endif %}
                 </div>
                 {% endfor %}
             {% endif %}
