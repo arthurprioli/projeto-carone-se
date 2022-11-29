@@ -6,7 +6,7 @@
     margin-bottom: 0;
 }
 
-button {
+button, .entrarButton {
     margin-top: 10px;
     margin-bottom: 10px;
     border: 0;
@@ -16,7 +16,7 @@ button {
     font-size: 45px;
 }
 
-button:active{
+button:active, .entrarButton:active {
     opacity: 0.7;
 }
 

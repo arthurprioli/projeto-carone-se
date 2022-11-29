@@ -29,14 +29,18 @@
                     <p>{{ passageiro.nome }}</p>
                 </div>
                 {% endfor %}
-            {% endif %}
-
-            <form action="{% url "office:api-carona-iniciar" carona_id %}" method="post">
-                {% csrf_token %}
-                <button name="confirmar" value="confirmar" class="confirmar">
+                
+                <form action="{% url "office:api-carona-iniciar" carona_id %}" method="post">
+                    {% csrf_token %}
+                    <button name="confirmar" value="confirmar" class="confirmar">
+                        INICIAR CARONA
+                    </button>
+                </form>
+            {% else %}
+                <button class="confirmar disabled-button" disabled title="Não é possível iniciar uma carona sem passageiros.">
                     INICIAR CARONA
                 </button>
-            </form>
+            {% endif %}
         </div>
         <img src="{% static "office/assets/mapa-tracado.png" %}" alt="mapa-com-rotas-tracadas">
     </body>

@@ -20,6 +20,7 @@ urlpatterns = [
     path("api/carona/<int:carona_id>/iniciar", views.api_carona_iniciar, name="api-carona-iniciar"),
     path("api/carona/<int:carona_id>/encerrar", views.api_carona_encerrar, name="api-carona-encerrar"),
     path("api/carona/<int:carona_id>/avaliar", views.api_carona_avaliar, name="api-carona-avaliar"),
+    path("api/carona/criar", views.api_carona_criar, name="api-carona-criar"),
 
     path("erro", views.erro_normal, name="erro"),
 ]
