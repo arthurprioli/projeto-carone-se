@@ -70,60 +70,86 @@ def carona_pronto_passageiro(request: HttpRequest, carona_id):  # passageiro/pre
     try:
         carona: Carona = Carona.objects.get(pk=carona_id)
         motorista = { "nome": carona.motorista.nome }
-        todos_passageiros = carona.usuario_set.all()
-        if request.user.usuario not in todos_passageiros:
+        if request.user.usuario == carona.motorista:
+            return redirect(reverse("office:grupo-motorista", args=[carona_id]))
+        elif request.user.usuario.carona != carona:
             return erro_generico(request, "Você não está nessa carona", status=403)
 
+        todos_passageiros = carona.usuario_set.all()
         passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros ]
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros }
         return render(request, "office/carona-pronto-passageiro.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
-        return HttpResponseNotFound("Carona inválida")
+        return erro_generico(request, "Carona inválida", status=404)
 
 @login_required
-def grupo_motorista(request: HttpRequest, carona_id):  # motorista/precarona  - TODO: Pág Erro
+def grupo_motorista(request: HttpRequest, carona_id):  # motorista/precarona
     try:
         carona: Carona = Carona.objects.get(pk=carona_id)
         motorista = { "nome": carona.motorista.nome }
+        if request.user.usuario != carona.motorista:
+            if request.user.usuario.carona == carona:
+                return redirect(reverse("office:carona-pronto-passageiro", args=[carona_id]))
+            else:
+                return erro_generico(request, "Você não é o motorista dessa carona", status=403)
+
         todos_passageiros = carona.usuario_set.all()
+
         passageiros = [ { "nome": passageiro.nome } for passageiro in todos_passageiros ]
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros }
         return render(request, "office/grupo-motorista.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
-        return HttpResponseNotFound("Carona inválida")
+        return erro_generico(request, "Carona inválida", status=404)
 
 @login_required
 def pagina_andamento_passageiro(request: HttpRequest, carona_id):  # passageiro/carona
     try:
         carona: Carona = Carona.objects.get(pk=carona_id)
         motorista = { "nome": carona.motorista.nome, "endereco": carona.motorista.endereco }
+        if request.user.usuario == carona.motorista:
+            return redirect(reverse("office:pagina-andamento-motorista", args=[carona_id]))
+        elif request.user.usuario.carona != carona:
+            return erro_generico(request, "Você não está nessa carona", status=403)
         todos_passageiros = carona.usuario_set.all()
+
         passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
         destino = carona.destino
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros, "destino": carona.destino }
         return render(request, "office/pagina-andamento-passageiro.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
-        return HttpResponseNotFound("Carona inválida")
+        return erro_generico(request, "Carona inválida", status=404)
 
 @login_required
 def pagina_andamento_motorista(request: HttpRequest, carona_id):  # motorista/carona
     try:
         carona: Carona = Carona.objects.get(pk=carona_id)
         motorista = { "nome": carona.motorista.nome, "endereco": carona.motorista.endereco }
+        if request.user.usuario != carona.motorista:
+            if request.user.usuario.carona == carona:
+                return redirect(reverse("office:pagina-andamento-passageiro", args=[carona_id]))
+            else:
+                return erro_generico(request, "Você não é o motorista dessa carona", status=403)
+
         todos_passageiros = carona.usuario_set.all()
         passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
         destino = carona.destino
         context = { "carona_id": carona_id, "motorista": motorista, "passageiros": passageiros, "destino": carona.destino }
         return render(request, "office/pagina-andamento-motorista.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
-        return HttpResponseNotFound("Carona inválida")
+        return erro_generico(request, "Carona inválida", status=404)
 
 @login_required
 def carona_encerrada_passageiro(request: HttpRequest, carona_id):  # passageiro/poscarona
     try:
         carona: Carona = Carona.objects.get(pk=carona_id)
         motorista = { "nome": carona.motorista.nome, "endereco": carona.motorista.endereco }
+        if request.user.usuario == carona.motorista:
+            return redirect(reverse("office:carona-encerrada-motorista", args=[carona_id]))
+        elif request.user.usuario.carona != carona:
+            return erro_generico(request, "Você não está nessa carona", status=403)
+
         todos_passageiros = carona.usuario_set.all()
+
         passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
         destino = carona.destino
         context = {
@@ -132,13 +158,19 @@ def carona_encerrada_passageiro(request: HttpRequest, carona_id):  # passageiro/
             }
         return render(request, "office/carona-encerrada-passageiro.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
-        return HttpResponseNotFound("Carona inválida")
+        return erro_generico(request, "Carona inválida", status=404)
 
 @login_required
 def carona_encerrada_motorista(request: HttpRequest, carona_id):  # motorista/poscarona
     try:
         carona: Carona = Carona.objects.get(pk=carona_id)
         motorista = { "nome": carona.motorista.nome, "endereco": carona.motorista.endereco }
+        if request.user.usuario != carona.motorista:
+            if request.user.usuario.carona == carona:
+                return redirect(reverse("office:carona-encerrada-passageiro", args=[carona_id]))
+            else:
+                return erro_generico(request, "Você não é o motorista dessa carona", status=403)
+
         todos_passageiros = carona.usuario_set.all()
         passageiros = [ { "nome": passageiro.nome, "endereco": passageiro.endereco } for passageiro in todos_passageiros ]
         destino = carona.destino
@@ -148,7 +180,7 @@ def carona_encerrada_motorista(request: HttpRequest, carona_id):  # motorista/po
             }
         return render(request, "office/carona-encerrada-motorista.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
-        return HttpResponseNotFound("Carona inválida")
+        return erro_generico(request, "Carona inválida", status=404)
 
 # -------------------------------------------
 
