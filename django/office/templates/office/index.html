@@ -15,7 +15,7 @@
         <h1>A plataforma para os que buscam carona!</h1>
         <div class="passageiro-motorista">
             <a href="{% url "office:pagina-procurar-carona" %}?tipo=passageiro"><button class="achar">Achar Carona</button></a>
-            <a href="{% url "office:pagina-escolher-grupo-carona" %}?tipo=motorista"><button class="dar">Dar Carona</button></a>
+            <a href="{% url "office:organizar-motorista" %}?tipo=motorista"><button class="dar">Dar Carona</button></a>
         </div>
         <img src="{% static "office/assets/mapa-logo.jpg" %}" alt="mapa-estilo-google-maps" class="vetor-mapa">
 
