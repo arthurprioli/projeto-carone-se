@@ -9,6 +9,9 @@ from django.urls import reverse
 from django.db.models import Model
 from django.contrib.auth.decorators import login_required
 from .forms import CadastroForm, CriarCaronaForm
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 def index(request):  # / (index)
@@ -340,6 +343,18 @@ def carona_encerrada_motorista(request: HttpRequest, carona_id):  # motorista/po
         return render(request, "office/carona-encerrada-motorista.html", context)
     except (Carona.DoesNotExist, Carona.MultipleObjectsReturned):
         return erro_generico(request, "Carona inválida", status=404)
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'template/registration/password_reset.html'
+    email_template_name = 'password_reset_email.html'
+    subject_template_name = 'password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('home')
+
 
 # -------------------------------------------
 
