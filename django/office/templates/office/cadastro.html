@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+{# /cadastro #}
 
-<html lang="pt-br">
-    <head>
-        {% load static %}
-        <meta charset="UTF-8" />
-        <title>Carone-Se - Cadastro</title>
-        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
-        <link rel="stylesheet" href="{% static "office/styles/cadastro.css" %}">
-    </head>
-    <body>
+{% extends "office/base.html" %}
+{% load static %}
+
+{% block title %}Carone-Se - Cadastro{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static "office/styles/cadastro.css" %}">{% endblock %}
+
+{% block body %}
         <div>
             <button class="retAzul">
                 <span class="cadastro">Cadastro</span>
@@ -35,5 +34,5 @@
         </div>
         <div>
         </div>
-    </body>
-</html>
+
+{% endblock %}

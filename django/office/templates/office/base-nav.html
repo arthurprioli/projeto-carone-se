@@ -1,0 +1,23 @@
+{% extends "office/base.html" %}
+
+{% load static %}
+
+{% block style %}
+<link href="{% static "office/styles/cabecalho-novo.css" %}" rel="stylesheet">
+<link href="{% static "office/styles/cabecalho-novo-fuller.css" %}" rel="stylesheet">
+{% block ownstyle %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+        {% block nav %}<nav {% block navattrs %}class="dark"{% endblock %}>
+            <a href="{% block backurl %}{% url "office:index" %}{% endblock %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
+            <h1>{% block navtitle %}Carone-Se{% endblock %}</h1>
+        </nav>{% endblock nav %}
+        {% block maindiv %}
+        <div {% block maindivattrs %}class="info"{% endblock %}>
+            {% block content %}
+            {% endblock content %}
+        </div>
+        {% endblock maindiv %}
+        {% block bodyextra %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,23 @@
+body {
+    background: #F8F6F1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 20vh 40vh;
+    grid-template-areas: "cab cab"
+                         "info mapa";
+}
+
+img { 
+    position: relative;
+    right: 0%;
+    grid-area: mapa;
+    width: 58vw;
+    height: 38vw;
+}
+
+button {
+    position: relative;
+    left: 15%;
+    top: 2.5%;
+}

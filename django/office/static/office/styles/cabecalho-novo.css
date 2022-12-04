@@ -1,7 +1,7 @@
 nav {
     background: #252627;
-    /* display: grid;
-    grid-area: cab; */
+    /* display: grid; */
+    grid-area: cab;
     margin: 0;
     /* text-align: left;
     vertical-align: middle; */
@@ -33,9 +33,9 @@ nav > h1 {
     display: inline-block;
     /* position: relative; */
     color: #FFF;
-    /* font-family: 'Roboto', sans-serif;   */
-    /* font-weight: 500; */
-    /* font-size: 2vw; */
+    font-family: 'Roboto', sans-serif;  
+    font-weight: 500;
+    font-size: 2vw;
     text-align: center;
     /* bottom: 50%; */
     margin: 0;

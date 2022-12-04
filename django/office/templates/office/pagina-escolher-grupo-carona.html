@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% load static %}
-    <meta charset="UTF-8" />
-    <title>Carone-Se - A Sua Plataforma de Caronas</title>
-    <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
-    <link rel="stylesheet" href="{% static "office/styles/pagina-escolher-grupo-carona.css" %}">
-    <link rel="stylesheet" href="{% static "office/styles/cabecalho-novo.css" %}">
-</head>
-    
-<body>
-    <nav class="dark">
-        <a href="{% url "office:pagina-procurar-carona" %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
-        <h1 class="textoLogin">BUSCAR CARONA</h1>
-    </nav>
-    
+{# /passageiro/busca-carona #}
+
+{% extends "office/base-nav.html" %}
+{% load static %}
+
+{% block title %}Carone-Se - Buscar Carona{% endblock %}
+{% block navtitle %}BUSCAR CARONA{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static "office/styles/pagina-escolher-grupo-carona.css" %}">
+<link rel="stylesheet" href="{% static "office/styles/cabecalho-novo.css" %}">
+{% endblock %}
+{% block maindivattrs %}class="flex-parent-element"{% endblock %}
+
+{% block backurl %}{% url "office:pagina-procurar-carona" %}{% endblock %}
+
+{% block content %}
     <div class="flex-parent-element">
         
         <div class="flex-child-element-gray">
@@ -68,124 +67,8 @@
             {% else %}
                 <h2>Nenhuma carona encontrada.</h2>
             {% endif %}
-            <!-- <br> -->
-            <!-- <div class="upper"> -->
-                                <!-- <div class="dad"> -->
-                                    <!-- <div class="son">
-                                        <button class="blacksies">
-                                            Grupo de {usuário A}
-                                        </button>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 1 &#x1F697;</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 2</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 3</p>
-                                            
-                                        <button class="juntar">
-                                            JUNTAR-SE
-                                        </button>
-                                    </div>
-                                
-                                    <div class="son">
-                                        <button class="blacksies">
-                                            Grupo de {usuário B}
-                                        </button>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 1 &#x1F697;</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 2</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 3</p>
-                                            
-                                        <button class="juntar">
-                                            JUNTAR-SE
-                                        </button>
-                                        
-                                        
-                                    </div>
-                                    
-                                    <div class="son">
-                                        <button class="blacksies">
-                                            Grupo de {usuário C}
-                                        </button>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 1 &#x1F697;</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 2</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 3</p>
-                                            
-                                        <button class="juntar">
-                                            JUNTAR-SE
-                                        </button>
-
-
-                                    </div> -->
-                                <!-- </div> -->
-
-            <!-- </div> -->
-<!-- <br> -->
-            <!-- <div class="lower"> -->
-                                <!-- <div class="dad"> -->
-                                    <!-- <div class="son">
-                                        <button class="blacksies">
-                                            Grupo de {usuário D}
-                                        </button>
-
-                                            <p class="individuo">&#x263A; Usuário 1 &#x1F697;</p>
-
-                                            <p class="individuo">&#x263A; Usuário 2</p>
-
-                                            <p class="individuo">&#x263A; Usuário 3</p>
-
-                                        <button class="juntar">
-                                            JUNTAR-SE
-                                        </button>
-
-
-                                    </div>
-
-                                    <div class="son">
-                                        <button class="blacksies">
-                                            Grupo de {usuário E}
-                                        </button>
-
-                                            <p class="individuo">&#x263A; Usuário 1 &#x1F697;</p>
-
-                                            <p class="individuo">&#x263A; Usuário 2</p>
-
-                                            <p class="individuo">&#x263A; Usuário 3</p>
-                                            
-                                        <button class="juntar">
-                                            JUNTAR-SE
-                                        </button>
-
-                                    </div>
-
-                                    <div class="son">
-                                        <button class="blacksies">
-                                            Grupo de {usuário F}
-                                        </button>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 1 &#x1F697;</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 2</p>
-                                            
-                                            <p class="individuo">&#x263A; Usuário 3</p>
-                                            
-                                        <button class="juntar">
-                                            JUNTAR-SE
-                                        </button>
-
-
-                                    </div> -->
-                                 <!-- </div> -->
-
-            <!-- </div> -->
         </div>
 
     </div>
 
-</body>
-</html>
+{% endblock content %}

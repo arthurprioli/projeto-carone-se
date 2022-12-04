@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% load static %}
-        <meta charset="UTF-8" />
-        <title>Carone-Se - A Sua Plataforma de Caronas</title>
-        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="{% static "office/styles/pagina-erro.css" %}" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <nav>
-            <a href="{% url "office:index" %}"><img class="voltar" src="{% static "office/assets/voltar.png" %}" alt=""></a>
-            <h1>ALGO DEU ERRADO!</h1>
-        </nav>
-        <div class="info">
+{# /erro #}
+
+{% extends "office/base-nav.html" %}
+{% load static %}
+
+{% block title %}Carone-Se - Erro{% endblock %}
+{% block navtitle %}ALGO DEU ERRADO!{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static "office/styles/pagina-erro.css" %}">{% endblock %}
+{% block maindivattrs %}class="central"{% endblock %}
+
+{% block content %}
             <h2>Algo deu errado durante a realização da sua carona: <br/><b>{{ mensagem_erro|default:"(Erro desconhecido!)" }}</b></h2>
             <a href="{% url "office:index" %}"><button class="retornar">VOLTAR À PAGINA INICIAL</button></a>
-        </div>     
-    </body>
-</html>
+{% endblock content %}

@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        {% load static %}
-        <meta charset="UTF-8" />
-        <title>Carone-Se - A Sua Plataforma de Caronas</title>
-        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
-        <link rel="stylesheet" href="{% static "office/styles/main.css" %}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
-    </head>
-    <body>
+{# / #}
+
+{% extends "office/base.html" %}
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static "office/styles/main.css" %}">{% endblock %}
+
+{% block body %}
+
         <img class="logo" src="{% static "office/assets/logo-sem-fundo.png" %}" alt="logo-carone-se">
         <h1>A plataforma para os que buscam carona!</h1>
         <div class="passageiro-motorista">
@@ -30,5 +26,5 @@
                 <p>Faça o login para buscar e encontrar caronas</p>
                 <a href="{% url "office:pagina-login" %}?next={{request.path}}">LOGIN</a>
             {% endif %}
-    </body>
-</html>
+
+{% endblock body %}

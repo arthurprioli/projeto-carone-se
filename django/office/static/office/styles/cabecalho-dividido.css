@@ -18,7 +18,7 @@ nav {
     margin: 0;
 }
 
-.voltar {
+a.voltar > img, img.voltar {
     position: relative;
     width: 10vw;
     height: 7vw;

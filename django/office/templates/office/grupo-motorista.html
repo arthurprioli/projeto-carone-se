@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% load static %}
-        <meta charset="UTF-8" />
-        <title>Carone-Se - A Sua Plataforma de Caronas</title>
-        <link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="{% static "office/styles/cabecalho-dividido.css" %}" rel="stylesheet">
-        <link href="{% static "office/styles/grupo-motorista.css" %}" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <nav>
-            <a href="{% url "office:index" %}"><img src="{% static "office/assets/voltar.png" %}" class="voltar" alt=""></a>
-            <h1>GRUPO DE CARONA CRIADO</h1>
-        </nav>
-        <div class="info">
+{# /motorista/precarona/:id #}
+
+{% extends "office/base-nav-mapa.html" %}
+{% load static %}
+
+{% block navtitle %}GRUPO DE CARONA CRIADO{% endblock %}
+{% block ownstyle %}
+<link rel="stylesheet" href="{% static "office/styles/grupo-motorista.css" %}">
+<link rel="stylesheet" href="{% static "office/styles/border-box.css" %}">
+{% endblock %}
+{% block maindivattrs %}class="info"{% endblock %}
+
+{% block content %}
             <h3>Grupo de {{ motorista.nome }}</h3>
             <div class="usuario">
                 <img src="{% static "office/assets/icone-usuario.png" %}" alt="icone-usuario">
@@ -41,7 +35,4 @@
                     INICIAR CARONA
                 </button>
             {% endif %}
-        </div>
-        <img src="{% static "office/assets/mapa-tracado.png" %}" alt="mapa-com-rotas-tracadas">
-    </body>
-</html>
+{% endblock content %}

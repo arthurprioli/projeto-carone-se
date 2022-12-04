@@ -1,0 +1,14 @@
+{# Para páginas contendo mapas e nav #}
+
+{% extends "office/base-nav.html" %}
+{% load static %}
+
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static "office/styles/mapa-page.css" %}">
+{% endblock style %}
+
+{% block body %}
+{{ block.super }}
+<img class="mapa" src="{% static "office/assets/mapa-tracado.png" %}" alt="mapa-com-rotas-tracadas">
+{% endblock body %}

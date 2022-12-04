@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <title>{% block title %}Carone-Se - A Sua Plataforma de Caronas{% endblock %}</title>
+        {% block icon %}<link rel="shortcut icon" href="{% static "office/assets/icone.png" %}"/>{% endblock %}
+        {% block style %}{% endblock %}
+
+        {% block fonts %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@800&display=swap" rel="stylesheet">
+        {% endblock %}
+
+        {% block headextra %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>
