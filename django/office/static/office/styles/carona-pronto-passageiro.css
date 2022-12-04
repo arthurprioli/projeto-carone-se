@@ -25,7 +25,7 @@ h3 {
     left: 70%;
 }
 
-p {
+div.info p {
     position: relative;
     bottom: 90%;
     left: 22%;
