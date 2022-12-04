@@ -1,0 +1,27 @@
+{# Inclui a barra de login #}
+
+{% extends "office/base.html" %}
+
+{% load static %}
+
+{% block head %}
+{{ block.super }}
+{% block barralogin-style %}<link href="{% static "office/styles/estilo-barra-login.css" %}" rel="stylesheet">{% endblock barralogin-style %}
+{% endblock head %}
+
+{% block body %}
+        {{ block.super }}
+        {% block barralogin %}
+        <div class="barra-login">
+            {% if user.is_authenticated %}
+                <p>Bem-vindo, {{user.get_username}}
+                <a class="logado-link" href="{% url "password_change" %}">Trocar senha</a>
+                 
+                <a class="logado-link" href="{% url "logout" %}">LOGOUT</a></p>
+                <!-- ?next={{request.path}} -->
+            {% else %}
+                <p>Faça o login para buscar e encontrar caronas! <a class="logado-link" href="{% url "office:pagina-login" %}?next={{request.path}}">LOGIN</a></p>
+            {% endif %}
+        </div>
+        {% endblock barralogin %}
+{% endblock %}

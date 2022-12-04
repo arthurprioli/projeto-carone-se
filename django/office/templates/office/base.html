@@ -2,6 +2,7 @@
 
 <html lang="pt-br">
     <head>
+        {% block head %}
         {% load static %}
         <meta charset="UTF-8" />
         <title>{% block title %}Carone-Se - A Sua Plataforma de Caronas{% endblock %}</title>
@@ -15,6 +16,7 @@
         {% endblock %}
 
         {% block headextra %}{% endblock %}
+        {% endblock head %}
     </head>
     <body>
         {% block body %}{% endblock %}

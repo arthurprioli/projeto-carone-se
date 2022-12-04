@@ -7,6 +7,8 @@
 {% block navtitle %}ALGO DEU ERRADO!{% endblock %}
 {% block style %}<link rel="stylesheet" href="{% static "office/styles/pagina-erro.css" %}">{% endblock %}
 {% block maindivattrs %}class="central"{% endblock %}
+{% block barralogin-style %}{% endblock %}
+{% block barralogin %}{% endblock %}
 
 {% block content %}
             <h2>Algo deu errado durante a realização da sua carona: <br/><b>{{ mensagem_erro|default:"(Erro desconhecido!)" }}</b></h2>

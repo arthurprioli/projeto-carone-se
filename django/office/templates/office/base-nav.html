@@ -1,14 +1,16 @@
-{% extends "office/base.html" %}
+{% extends "office/base-login.html" %}
 
 {% load static %}
 
 {% block style %}
+{{ block.super }}
 <link href="{% static "office/styles/cabecalho-novo.css" %}" rel="stylesheet">
 <link href="{% static "office/styles/cabecalho-novo-fuller.css" %}" rel="stylesheet">
 {% block ownstyle %}{% endblock %}
 {% endblock %}
 
 {% block body %}
+        {{ block.super }}
         {% block nav %}<nav {% block navattrs %}class="dark"{% endblock %}>
             <a href="{% block backurl %}{% url "office:index" %}{% endblock %}" class="voltar"><img src="{% static "office/assets/voltar.png" %}" alt=""></a>
             <h1>{% block navtitle %}Carone-Se{% endblock %}</h1>

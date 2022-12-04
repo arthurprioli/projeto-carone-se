@@ -3,8 +3,9 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 40% 60%;
-    grid-template-rows: 20vh 40vh;
-    grid-template-areas: "cab cab"
+    grid-template-rows: 5vh 20vh 40vh;
+    grid-template-areas: "login login"
+                         "cab cab"
                          "info mapa";
 }
 

@@ -1,12 +1,15 @@
 {# / #}
 
-{% extends "office/base.html" %}
+{% extends "office/base-login.html" %}
 {% load static %}
 
-{% block style %}<link rel="stylesheet" href="{% static "office/styles/main.css" %}">{% endblock %}
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static "office/styles/main.css" %}">
+{% endblock %}
 
 {% block body %}
-
+        {{ block.super }}
         <img class="logo" src="{% static "office/assets/logo-sem-fundo.png" %}" alt="logo-carone-se">
         <h1>A plataforma para os que buscam carona!</h1>
         <div class="passageiro-motorista">
@@ -14,17 +17,4 @@
             <a href="{% url "office:organizar-motorista" %}?tipo=motorista"><button class="dar">Dar Carona</button></a>
         </div>
         <img src="{% static "office/assets/mapa-logo.jpg" %}" alt="mapa-estilo-google-maps" class="vetor-mapa">
-
-        
-            {% if user.is_authenticated %}
-                <p>Seja Bem-Vindo</p>
-                <p>Welcome: {{user.get_username}}</p>
-                <a class="achar" href="{% url "password_change" %}">Trocar senha</a>
-                <a class="achar" href="{% url "logout" %}">LOGOUT</a>
-                <!-- ?next={{request.path}} -->
-            {% else %}
-                <p>Faça o login para buscar e encontrar caronas</p>
-                <a href="{% url "office:pagina-login" %}?next={{request.path}}">LOGIN</a>
-            {% endif %}
-
 {% endblock body %}

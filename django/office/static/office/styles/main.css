@@ -7,8 +7,9 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50vh 25vh 55vh;
-    grid-template-areas: "logo mapa"
+    grid-template-rows: 5vh 50vh 25vh 55vh;
+    grid-template-areas: "login login"
+                         "logo mapa"
                          "texto mapa"
                          "botoes mapa";
 }
